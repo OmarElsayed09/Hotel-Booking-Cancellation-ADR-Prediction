@@ -147,7 +147,7 @@ class PredictionResponse(BaseModel):
 @app.get("/api/health")
 def health_check():
     return {
-        "status": "healthy",
+        "status": "healthy" if app_state["classifier"] is not None and app_state["regressor"] is not None else "degraded",
         "classifier_ready": app_state["classifier"] is not None,
         "regressor_ready": app_state["regressor"] is not None,
         "classification_threshold": app_state["threshold"],
