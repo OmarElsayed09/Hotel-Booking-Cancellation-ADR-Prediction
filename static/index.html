@@ -77,7 +77,7 @@
         <div>
           <div class="flex items-center gap-2">
             <span class="font-heading font-extrabold text-lg tracking-tight bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">GrandVista AI</span>
-            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Production API</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Prototype API</span>
           </div>
           <p class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="tagline">Hotel Revenue &amp; Cancellation Intelligence</p>
         </div>
@@ -311,11 +311,9 @@
             <div class="flex items-center justify-between pb-4 border-b border-surface-borderLight dark:border-surface-borderDark">
               <div>
                 <h3 class="font-heading font-bold text-base" data-i18n="lbl_prediction_results">Prediction Outcome</h3>
-                <p class="text-xs text-slate-400" data-i18n="lbl_threshold_note">Evaluated at optimal F1 threshold (0.45)</p>
+                <p class="text-xs text-slate-400" >Awaiting live model prediction</p>
               </div>
-              <span id="res-badge-status" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
-                Not Canceled
-              </span>
+              <span id="res-badge-status" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Not evaluated</span>
             </div>
 
             <!-- Gauge & Probability -->
@@ -324,10 +322,10 @@
                 <!-- SVG Gauge -->
                 <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8" class="text-slate-200 dark:text-slate-800" fill="transparent"/>
-                  <circle id="gauge-circle" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8" class="text-emerald-500 radial-meter" stroke-dasharray="251.2" stroke-dashoffset="180" stroke-linecap="round" fill="transparent"/>
+                  <circle id="gauge-circle" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8" class="text-emerald-500 radial-meter" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" fill="transparent"/>
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-center">
-                  <span id="res-probability" class="font-heading font-extrabold text-3xl text-slate-900 dark:text-white">25.5%</span>
+                  <span id="res-probability" class="font-heading font-extrabold text-3xl text-slate-900 dark:text-white">—</span>
                   <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider" data-i18n="lbl_cancel_prob">Cancel Probability</span>
                 </div>
               </div>
@@ -336,7 +334,7 @@
               <div class="mt-3">
                 <span id="res-risk-level" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span data-i18n="risk_low">LOW CANCELLATION RISK</span>
+                  <span >AWAITING PREDICTION</span>
                 </span>
               </div>
             </div>
@@ -348,7 +346,7 @@
                   <i data-lucide="tag" class="w-3.5 h-3.5 text-brand-500"></i>
                   <span data-i18n="lbl_estimated_adr">Estimated ADR</span>
                 </div>
-                <div id="res-adr" class="font-heading font-extrabold text-xl text-slate-900 dark:text-white">$133.61</div>
+                <div id="res-adr" class="font-heading font-extrabold text-xl text-slate-900 dark:text-white">—</div>
                 <div class="text-[10px] text-slate-400" data-i18n="lbl_per_room_night">per room / night</div>
               </div>
 
@@ -357,8 +355,8 @@
                   <i data-lucide="coins" class="w-3.5 h-3.5 text-emerald-500"></i>
                   <span data-i18n="lbl_projected_rev">Projected Stay Value</span>
                 </div>
-                <div id="res-revenue" class="font-heading font-extrabold text-xl text-emerald-600 dark:text-emerald-400">$400.84</div>
-                <div id="res-nights-label" class="text-[10px] text-slate-400">3 nights total</div>
+                <div id="res-revenue" class="font-heading font-extrabold text-xl text-emerald-600 dark:text-emerald-400">—</div>
+                <div id="res-nights-label" class="text-[10px] text-slate-400">No prediction yet</div>
               </div>
             </div>
           </div>
@@ -370,14 +368,7 @@
               <h4 class="font-heading font-bold text-sm tracking-wide" data-i18n="sec_ai_recommendations">Revenue Management Guidance</h4>
             </div>
             <ul id="res-recommendations" class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
-              <li class="flex items-start gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-surface-dark">
-                <span>✅</span>
-                <span>High Certainty Guest: Ideal candidate for room upgrades or complimentary dining vouchers.</span>
-              </li>
-              <li class="flex items-start gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-surface-dark">
-                <span>📈</span>
-                <span>Market rate benchmark ($133.61) exceeds current quote ($105.00). Room rate yields solid margin.</span>
-              </li>
+              <li>Run a model prediction to display recommendations.</li>
             </ul>
           </div>
 

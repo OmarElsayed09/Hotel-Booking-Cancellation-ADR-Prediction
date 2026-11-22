@@ -1,0 +1,19 @@
+name: Stored metrics provenance verification
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate and hash recorded metrics
+        run: python scripts/verify_metrics.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hotel-stored-metrics-provenance
+          path: artifacts/metrics-integrity.json
