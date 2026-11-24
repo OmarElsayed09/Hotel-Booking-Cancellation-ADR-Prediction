@@ -144,3 +144,7 @@ python -m unittest discover -s tests -v
 # or test API endpoints directly:
 python tests/test_api.py
 ```
+
+## Screenshot
+
+![Hotel booking prediction dashboard](docs/screenshot.png)
